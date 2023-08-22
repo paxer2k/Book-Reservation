@@ -1,44 +1,20 @@
-﻿class Program
+﻿using Models;
+using Services;
+
+class Program
 {
+    private CustomerService customerService;
     public static void Main(string[] args)
     {
-
-        int[] numbers = { 19, 5, 42, 2, 77 };
-
-        int result = sumTwoSmallestNumbers(numbers);
-
-        Console.WriteLine(result);
+        Program myProgram = new Program();
+        myProgram.Start();
     }
 
-
-
-
-
-    public static int sumTwoSmallestNumbers(int[] numbers)
+    void Start()
     {
-        numbers = numbers.Where(x => x >= 0).ToArray();
+        customerService = new CustomerService();
 
-        if (numbers.Length < 2)
-            return 0;
-
-        int smallest = int.MaxValue;
-        int secondSmallest = int.MaxValue;
-
-        for (int i = 0; i < numbers.Length; i++)
-        {
-            if (numbers[i] < smallest)
-            {
-                secondSmallest = smallest;
-                smallest = numbers[i];
-            }
-            else if (numbers[i] < secondSmallest)
-            {
-                secondSmallest = numbers[i];
-            }
-        }
-
-        int sum = smallest + secondSmallest;
-
-        return sum;
+        foreach(Customer c in customerService.GetAllCustomers())
+            Console.WriteLine(c);
     }
 }
