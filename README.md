@@ -1,0 +1,1 @@
+If you want to connect this to your own MySQL database, make sure to enter the credentials of your database (whether its localhost or hosted) to the Settings.settings files. This will automatically update the App.config file as well as the settings key call inside of BaseDao.cs
